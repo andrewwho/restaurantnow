@@ -1,0 +1,16 @@
+- content_for :head do
+  %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}
+    
+.hero-unit
+  %h1
+    Restauranteur
+  %p
+    Search for a restaurant!
+
+.control-group
+  %div.controls
+    %input{:id => "search-field", :type=>"text", :size => "50"}
+    %span#search-error{:style => "display: none;"}
+      No address was found
+
+#gmaps{:style => "width:100%; height:500px;"}
