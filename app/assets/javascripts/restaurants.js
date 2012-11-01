@@ -5,6 +5,7 @@ center: new google.maps.LatLng(43.65036, -79.39671),
 zoom: 15,
 mapTypeId: google.maps.MapTypeId.ROADMAP
 };
+
 var map = new google.maps.Map(document.getElementById("gmaps"), mapOptions);
 var input = document.getElementById('search-field');
 var error = document.getElementById('search-error');
@@ -18,12 +19,14 @@ var marker = new google.maps.Marker({
 	map: map
 });
 
+
 google.maps.event.addListener(autocomplete, 'place_changed', function() {
 	infowindow.close(); // close the info pop
 	marker.setVisible(false); // hide the current marker
 	input.className = '';
 	error.className = '';
 	var place = autocomplete.getPlace();
+	console.log(place);
 	if (!place.geometry) {
         // nothing found
         input.className = 'notfound';
@@ -75,6 +78,9 @@ google.maps.event.addListener(autocomplete, 'place_changed', function() {
     infowindow.open(map, marker);
 });
 
+
+
+
 	function findrestaurants(place) {
 		var request = {
 		    location: place.geometry.location,
@@ -100,6 +106,7 @@ google.maps.event.addListener(autocomplete, 'place_changed', function() {
 	 }
 
 	function callback(results, status) {
+		alert('hello');
 	  if (status == google.maps.places.PlacesServiceStatus.OK) {
 		var foodspots = '';
 	    for (var i = 0; i < results.length; i++) {
@@ -135,5 +142,7 @@ google.maps.event.addListener(autocomplete, 'place_changed', function() {
 	  	  }
 
 	}
+	
+	
 
 }
